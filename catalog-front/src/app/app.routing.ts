@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule,} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {Routes, RouterModule} from '@angular/router';
 
@@ -8,15 +8,11 @@ import {AdminLayoutComponent} from './layout/main/admin-layout/admin-layout.comp
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'main',
         pathMatch: 'full',
     }, {
-        path: '',
-        component: AdminLayoutComponent,
-        children: [{
-            path: '',
-            loadChildren: () => import('./layout/main/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-        }]
+        path: 'main',
+        loadChildren: () => import('./layout/main/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
     }
 ];
 
@@ -24,11 +20,9 @@ const routes: Routes = [
     imports: [
         CommonModule,
         BrowserModule,
-        RouterModule.forRoot(routes, {
-            useHash: true
-        })
+        RouterModule.forRoot(routes)
     ],
-    exports: [],
+    exports: [RouterModule],
 })
 export class AppRoutingModule {
 }
