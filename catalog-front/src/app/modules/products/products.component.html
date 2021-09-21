@@ -1,0 +1,50 @@
+<app-main-container>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title ">Products</h4>
+                    <p class="card-category">Products list</p>
+                </div>
+                <div class="card-body" *ngIf="products$ | async as products">
+                    <div class="table-responsive" *ngIf="products.length">
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>Actions</th>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let prod of products">
+                                <td>
+                                    {{prod.id}}
+                                </td>
+                                <td class="text-primary">
+                                    {{prod.name}}
+                                </td>
+                                <td>
+                                    <button class="icon-button" (click)="delete(prod.id)">
+                                        <mat-icon color="primary">delete</mat-icon>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row" *ngIf="!products.length">
+                        <div class="col">
+                            No hay productos agregados.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button (click)="add()">add product</button>
+</app-main-container>

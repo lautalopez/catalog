@@ -1,0 +1,9 @@
+.icon-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.icon-button:disabled {
+  cursor: default;
+}
