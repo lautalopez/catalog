@@ -18,7 +18,6 @@ import {CoreModule} from './infrastructure/core.module';
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpClientModule,
         AppRoutingModule,
 /*        AgmCoreModule.forRoot({
             apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'

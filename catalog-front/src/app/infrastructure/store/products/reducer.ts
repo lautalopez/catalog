@@ -11,6 +11,9 @@ const productReducer = createReducer<ProductsState>(
     }),
     on(Actions.Delete, (state, {id}) => {
         return {items: state.items.filter(prod => !prod.id.equals(id))}
+    }),
+    on(Actions.ProductsLoaded, (state, {products}) => {
+        return {items: products}
     })
 );
 

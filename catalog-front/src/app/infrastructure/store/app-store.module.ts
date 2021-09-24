@@ -6,6 +6,7 @@ import * as Products from './collections/products';
 import {CollectionStoreModule} from '../ngrx-collections/collection-store.module';
 import {AppEffects} from './effects';
 import {ProductStoreModule} from './products/product-store.module';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 function throwIfAlreadyLoaded(parentModule: any, moduleName: string): void {
     if (parentModule) {
@@ -27,6 +28,7 @@ function throwIfAlreadyLoaded(parentModule: any, moduleName: string): void {
                 strictActionImmutability: true
             }
         }),
+        StoreDevtoolsModule.instrument(),
         EffectsModule.forRoot([AppEffects])
     ]
 })

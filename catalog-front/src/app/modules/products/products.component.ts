@@ -2,10 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {State} from '../../infrastructure/store/state';
 import {Observable} from 'rxjs';
-import * as ProductsCollection from '../../infrastructure/store/collections/products';
 import * as ProductStore from '../../infrastructure/store/products';
+import * as ProductCollection from '../../infrastructure/store/collections/products';
 import {Product} from '../../infrastructure/models/product.model';
-import {startWith} from 'rxjs/operators';
 
 @Component({
     selector: 'app-products',
@@ -21,6 +20,7 @@ export class ProductsComponent implements OnInit {
 
     ngOnInit(): void {
         this.products$ = this.store.select(ProductStore.selectAll);
+        this.store.dispatch(ProductStore.GetAll());
     }
 
     getRandomString(length) {
