@@ -36,11 +36,25 @@ namespace Catalog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(policy =>
+                {
+                    // policy.SetIsOriginAllowedToAllowWildcardSubdomains().WithOrigins("http://localhost:4200");
+                    
+                    policy.SetIsOriginAllowed(_ => true);
+                    policy.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .WithExposedHeaders("*")
+                        .AllowCredentials();
+                });
+            });
+            
             BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
             BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
 
             var mongoDbSettings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
-
+            
             services.AddSingleton<IMongoClient>(serviceProvider =>
             {
                 return new MongoClient(mongoDbSettings.ConnectionString);
@@ -64,14 +78,17 @@ namespace Catalog
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            
+            app.UseCors();
+
+            if (env.IsDevelopment())
+            {
+                // app.UseHttpsRedirection();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog v1"));
             }
 
-            if (env.IsDevelopment())
-            {
-                app.UseHttpsRedirection();
-            }
 
 
             app.UseRouting();

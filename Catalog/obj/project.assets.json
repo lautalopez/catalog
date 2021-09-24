@@ -950,11 +950,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Lautaro\\Proyectos\\Others\\back-net\\Catalog\\Catalog.csproj",
+      "projectUniqueName": "C:\\Lautaro\\Proyectos\\Others\\catalog\\Catalog\\Catalog.csproj",
       "projectName": "Catalog",
-      "projectPath": "C:\\Lautaro\\Proyectos\\Others\\back-net\\Catalog\\Catalog.csproj",
+      "projectPath": "C:\\Lautaro\\Proyectos\\Others\\catalog\\Catalog\\Catalog.csproj",
       "packagesPath": "C:\\Users\\Lauta\\.nuget\\packages\\",
-      "outputPath": "C:\\Lautaro\\Proyectos\\Others\\back-net\\Catalog\\obj\\",
+      "outputPath": "C:\\Lautaro\\Proyectos\\Others\\catalog\\Catalog\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
