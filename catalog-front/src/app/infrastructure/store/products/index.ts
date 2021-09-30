@@ -1,2 +1,7 @@
-export * from './selectors';
-export * from './actions';
+import * as selectors from './selectors';
+import * as actions from './actions';
+
+export const ProductStore = {
+    selectors,
+    actions
+}

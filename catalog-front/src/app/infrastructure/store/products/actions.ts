@@ -11,3 +11,5 @@ export const Delete = createAction(prefix + 'Delete', props<{ id: Guid }>());
 export const GetAll = createAction(prefix + 'Get all');
 
 export const ProductsLoaded = createAction(prefix + 'Loaded', props<{ products: Product[]}>());
+
+export const Create = createAction(prefix + 'Create', props<{ product: Product}>());
